@@ -1,0 +1,31 @@
+<h1>Patient Profile#index</h1>
+<%= form_tag profiles_index_path, method: :get do %>
+<%= select_tag "category_id", options_from_collection_for_select(Category.all, "id", "name"), include_blank: "all" %>
+<%= submit_tag "Search" %>
+<% end %>
+<ul>
+  <% @doctors.find_each do |doctor|  %>
+    <li>
+      <%= "#{doctor.first_name} #{doctor.last_name} #{doctor.category.name}" %>
+      <% if current_user.doctors.include?(doctor) %>
+      <span>You have appointment</span>
+      <% else %>
+      <%= link_to "Make an appointment", appointments_path(patient: current_user, doctor: doctor), method: :post %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<ul>
+  <% current_user.appointments.find_each do |appointment|  %>
+    <li>
+      <% if appointment.active? %>
+        <p>
+          <%= "Doctor #{appointment.doctor.last_name} did not review your appointment" %>
+        </p>
+      <% else %>
+        <%= "Dr #{appointment.doctor.last_name} recommend: #{appointment.recommendation}" %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

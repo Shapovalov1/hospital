@@ -1,0 +1,14 @@
+<h1>Doctor Profile#index</h1>
+<ul>
+  <% current_user.appointments.find_each do |appointment|  %>
+    <li>
+      <% if appointment.active? %>
+      <%= "Patient name: #{appointment.patient.first_name} #{appointment.patient.last_name}" %>
+      <%= link_to "Make a recommendation", edit_appointment_path(appointment) %>
+      <% else %>
+      <%= "You recommend to #{appointment.patient.last_name} : #{appointment.recommendation}" %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+<p>Find me in app/views/profile/index.html.erb</p>
