@@ -30,10 +30,13 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
 
+gem 'phonelib'
+
 gem 'pry', '~> 0.13.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'rspec-rails', '~> 6.0.0'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 

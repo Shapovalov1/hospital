@@ -7,6 +7,8 @@ class ProfilesController < ApplicationController
       render :patient_index
     elsif current_user.type == 'Doctor'
       render :doctor_index
+    elsif current_user.type == 'Admin'
+      render :admin_index
     end
   end
 

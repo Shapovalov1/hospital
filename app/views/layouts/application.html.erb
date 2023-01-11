@@ -10,9 +10,14 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="application.css">
   </head>
-
-  <body>
+  <style>
+      table, th, td {
+          border: 1px solid black;
+      }
+  </style>
+  <body style="margin-top: 30px">
     <%= link_to "Logout", destroy_user_session_path, method: 'delete' %>
+    <%= link_to "edit", edit_user_registration_path %><br />
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>

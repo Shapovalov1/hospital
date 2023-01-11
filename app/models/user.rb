@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :phone_number, uniqueness: true
+  validates :phone_number, uniqueness: true, phone: true
 
   def email_required?
     false

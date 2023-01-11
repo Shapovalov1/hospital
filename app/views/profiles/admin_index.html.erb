@@ -1,0 +1,30 @@
+<h1>Admin Profile</h1>
+<h2>Doctors</h2>
+<table>
+  <% Doctor.find_each do |doctor|  %>
+    <tr>
+      <td><%= "#{doctor.first_name}" %></td>
+      <td><%= "#{doctor.last_name}" %></td>
+      <td><%= "#{doctor.category.name}" %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to "New doctor", new_doctor_path %><br />
+<h2>Patients</h2>
+<table>
+  <% Patient.find_each do |patient|  %>
+    <tr>
+      <td><%= "#{patient.first_name} " %></td>
+      <td><%= "#{patient.last_name}" %></td>
+    </tr>
+  <% end %>
+</table>
+<h2>Categories</h2>
+<table>
+  <% Category.find_each do |category|  %>
+    <tr>
+      <td><%= "#{category.name}" %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to "New category", new_category_path %><br />

@@ -1,14 +1,16 @@
-<h1>Doctor Profile#index</h1>
-<ul>
+<h1>Doctor Profile</h1>
+<table>
   <% current_user.appointments.find_each do |appointment|  %>
-    <li>
+    <tr>
       <% if appointment.active? %>
-      <%= "Patient name: #{appointment.patient.first_name} #{appointment.patient.last_name}" %>
-      <%= link_to "Make a recommendation", edit_appointment_path(appointment) %>
+        <td><%= "Patient name:" %></td>
+        <td><%= "#{appointment.patient.first_name} " %></td>
+        <td><%= "#{appointment.patient.last_name}" %></td>
+        <td> <%= link_to "Make a recommendation", edit_appointment_path(appointment) %></td>
       <% else %>
-      <%= "You recommend to #{appointment.patient.last_name} : #{appointment.recommendation}" %>
+        <td> <%= "You recommend to #{appointment.patient.last_name} :" %></td>
+        <td><%= "#{appointment.recommendation}" %></td>
       <% end %>
-    </li>
+    </tr>
   <% end %>
-</ul>
-<p>Find me in app/views/profile/index.html.erb</p>
+</table>
