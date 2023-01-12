@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2022_09_17_151727) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "appointments", force: :cascade do |t|
-    t.integer "doctor_id"
-    t.integer "patient_id"
+    t.bigint "doctor_id"
+    t.bigint "patient_id"
     t.string "recommendation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -40,7 +43,7 @@ ActiveRecord::Schema.define(version: 2022_09_17_151727) do
     t.string "first_name"
     t.string "last_name"
     t.string "type"
-    t.integer "category_id"
+    t.bigint "category_id"
     t.index ["category_id"], name: "index_users_on_category_id"
     t.index ["phone_number"], name: "index_users_on_phone_number", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
