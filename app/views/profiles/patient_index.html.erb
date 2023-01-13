@@ -1,10 +1,19 @@
-<h1>Patient Profile</h1>
+<div class="d-flex justify-content-center">
+  <h1>Patient Profile</h1>
+</div>
 <%= form_tag profiles_index_path, method: :get do %>
 <%= select_tag "category_id", options_from_collection_for_select(Category.all, "id", "name"), include_blank: "all" %>
 <%= submit_tag "Search" %>
 <% end %>
-<table>
-  <% @doctors.find_each do |doctor|  %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <% Doctor.find_each do |doctor|  %>
     <tr>
       <td><%= "#{doctor.first_name}" %></td>
       <td><%= "#{doctor.last_name}" %></td>

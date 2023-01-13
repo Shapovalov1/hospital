@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :phone_number, uniqueness: true, phone: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 
   def email_required?
     false

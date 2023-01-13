@@ -1,5 +1,5 @@
 <h1>Doctor Profile</h1>
-<table>
+<table class="table table-striped">
   <% current_user.appointments.find_each do |appointment|  %>
     <tr>
       <% if appointment.active? %>

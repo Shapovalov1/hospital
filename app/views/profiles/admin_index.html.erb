@@ -1,6 +1,28 @@
-<h1>Admin Profile</h1>
-<h2>Doctors</h2>
-<table>
+<div class="d-flex justify-content-center">
+  <h1>Admin Profile</h1>
+</div>
+<div class="d-flex justify-content-center">
+  <h2>Categories</h2>
+</div>
+<table class="table table-striped">
+  <% Category.find_each do |category|  %>
+    <tr>
+      <td><%= "#{category.name}" %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to "New category", new_category_path %><hr />
+<div class="d-flex justify-content-center">
+  <h2>Doctors</h2>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Category</th>
+    </tr>
+  </thead>
   <% Doctor.find_each do |doctor|  %>
     <tr>
       <td><%= "#{doctor.first_name}" %></td>
@@ -9,9 +31,17 @@
     </tr>
   <% end %>
 </table>
-<%= link_to "New doctor", new_doctor_path %><br />
-<h2>Patients</h2>
-<table>
+<%= link_to "New doctor", new_doctor_path %><hr />
+<div class="d-flex justify-content-center">
+  <h2>Patients</h2>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+    </tr>
+  </thead>
   <% Patient.find_each do |patient|  %>
     <tr>
       <td><%= "#{patient.first_name} " %></td>
@@ -19,12 +49,3 @@
     </tr>
   <% end %>
 </table>
-<h2>Categories</h2>
-<table>
-  <% Category.find_each do |category|  %>
-    <tr>
-      <td><%= "#{category.name}" %></td>
-    </tr>
-  <% end %>
-</table>
-<%= link_to "New category", new_category_path %><br />
